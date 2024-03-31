@@ -1,0 +1,3 @@
+#!/bin/bash
+
+dd if=/dev/zero of=test_file bs=1G count=4

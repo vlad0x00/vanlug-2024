@@ -1,0 +1,3 @@
+#!/bin/bash
+
+perf stat -e LLC-load-misses,LLC-loads,LLC-stores ./cache
