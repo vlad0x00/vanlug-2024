@@ -1,6 +1,6 @@
-[submodule "examples/01-flamegraphs/FlameGraph"]
-	path = examples/01-flamegraphs/FlameGraph
-	url = https://github.com/brendangregg/FlameGraph
 [submodule "examples/07-flags/llama.cpp"]
 	path = examples/07-flags/llama.cpp
 	url = https://github.com/ggerganov/llama.cpp
+[submodule "examples/01-flamegraphs/FlameGraph"]
+	path = examples/01-flamegraphs/FlameGraph
+	url = https://github.com/brendangregg/FlameGraph
