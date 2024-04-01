@@ -1,8 +1,10 @@
+#include "../common.hpp"
+
 #include <cmath>
 #include <vector>
 #include <iostream>
 
-int main() {
+void f() {
     size_t num_elements = 1'000'000'000;
     std::vector<double> data(num_elements);
 
@@ -20,6 +22,10 @@ int main() {
 
     // Print the sum to introduce a side effect
     std::cout << "Sum: " << sum << std::endl;
+}
+
+int main() {
+    BENCHMARK(f(), "Execution time: ");
 
     return 0;
 }

@@ -17,7 +17,7 @@ llama.cpp/main: llama.cpp/Makefile llama.cpp/models/llama-2-13b-chat.Q5_K_M.gguf
 	$(MAKE) -C llama.cpp main
 
 flags: flags.cpp
-	g++ -O3 -std=c++20 -o $@ $< # -ffast-math # #-march=native
+	g++ -O3 -std=c++20 -o $@ $< # -ffast-math # -march=native
 
 clean:
 	$(RM) flags
