@@ -7,7 +7,7 @@
 
 __m128i FILTER = _mm_set1_epi16(0x00FF);
 
-__m128i apply_filter(__m128i pixel_data) {
+__m128i apply_filter(__m128i &pixel_data) {
     return _mm_and_si128(pixel_data, FILTER);
 }
 
@@ -42,6 +42,12 @@ void process_image_uint128_t(uint8_t* src, uint8_t* dst, size_t num_pixels) {
     }
 }
 
+void write_to_file(uint8_t* dst, size_t num_pixels) {
+    FILE* file = fopen("/dev/null", "wb");
+    fwrite(dst, sizeof(uint8_t), num_pixels, file);
+    fclose(file);
+}
+
 int main() {
     const size_t num_pixels = 1024L * 1024L * 1024L * 10L;
     const size_t num_bytes = num_pixels * sizeof(uint8_t);
@@ -49,11 +55,13 @@ int main() {
     uint8_t* dst = static_cast<uint8_t*>(std::aligned_alloc(16, num_bytes));
 
     // Warm up the cache
-    //process_image_regular(src, dst, num_pixels);
+    process_image_regular(src, dst, num_pixels);
 
-    //BENCHMARK(process_image_uint128_t(src, dst, num_pixels), "uint128_t: ");
+    BENCHMARK(process_image_uint128_t(src, dst, num_pixels), "uint128_t: ");
     BENCHMARK(process_image_regular(src, dst, num_pixels), "Regular: ");
-    //BENCHMARK(process_image_nontemporal(src, dst, num_pixels), "Non-temporal: ");
+    BENCHMARK(process_image_nontemporal(src, dst, num_pixels), "Non-temporal: ");
+
+    write_to_file(dst, num_pixels);
 
     return 0;
 }

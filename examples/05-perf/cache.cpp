@@ -41,12 +41,12 @@ int main() {
     // Warm up the cache
     // read_by_row(array, SIZE, SIZE);
 
-    //BENCHMARK(read_by_row(array, SIZE, SIZE), "Read by row: ");
+    BENCHMARK(read_by_row(array, SIZE, SIZE), "Read by row: ");
 
     // Warm up the cache
     // read_by_col(array, SIZE, SIZE);
 
-    BENCHMARK(read_by_col(array, SIZE, SIZE), "Read by col: ");
+    //BENCHMARK(read_by_col(array, SIZE, SIZE), "Read by col: ");
 
     return 0;
 }
