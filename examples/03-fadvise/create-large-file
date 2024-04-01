@@ -1,4 +1,4 @@
 #!/bin/bash
 
-fallocate -l 20G large_file
-dd if=/dev/urandom of=large_file bs=1G count=20
+fallocate -l 10G large_file
+dd if=/dev/urandom of=large_file bs=1G count=10

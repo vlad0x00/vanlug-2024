@@ -53,8 +53,8 @@ int main() {
     //posix_fadvise(fd, 0, 0, POSIX_FADV_SEQUENTIAL); std::cerr << "Advise sequential\n";
     posix_fadvise(fd, 0, 0, POSIX_FADV_RANDOM); std::cerr << "Advise random\n";
     
-    BENCHMARK(read_sequentially(fd), "Read sequential: ");
-    //BENCHMARK(read_randomly(fd, file_size), "Read random: ");
+    //BENCHMARK(read_sequentially(fd), "Read sequential: ");
+    BENCHMARK(read_randomly(fd, file_size), "Read random: ");
 
     close(fd);
 

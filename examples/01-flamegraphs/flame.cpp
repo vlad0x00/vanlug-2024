@@ -10,36 +10,36 @@ void do_work(long work) {
     }
 }
 
-void f1() {
+void f3() {
     do_work(10000);
 }
 
 void f2() {
-    f1();
+    f3();
     do_work(10000);
 }
 
-void f3() {
+void f1() {
     f2();
     do_work(5000);
 }
 
-void f4() {
+void f5() {
     do_work(10000);
 }
 
-void f5() {
+void f6() {
     do_work(40000);
 }
 
-void f6() {
-    f4();
+void f4() {
     f5();
+    f6();
     do_work(10000);
 }
 
 int main() {
-    f3();
-    f6();
+    f1();
+    f4();
     return 0;
 }
